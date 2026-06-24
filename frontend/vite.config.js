@@ -68,7 +68,7 @@ export default defineConfig({
 			},
 			manifest: {
 				display: "standalone",
-				name: "Kalika",
+				name: "Kalikavite",
 				short_name: "Kalika",
 				start_url: "/hrms",
 				description: "Everyday HR & Payroll operations at your fingertips",
