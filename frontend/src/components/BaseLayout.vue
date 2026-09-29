@@ -30,11 +30,11 @@
 							v-slot="{ navigate }"
 							class="flex flex-col items-center"
 						>
-							<span class="relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition cursor-pointer" @click="navigate">
-								<FeatherIcon name="bell" class="h-5 w-5" />
+							<span class="relative p-2 rounded-xl text-[#D4AF37] hover:text-white hover:bg-white/10 transition cursor-pointer" @click="navigate">
+								<FeatherIcon name="bell" class="h-6 w-6 text-[#D4AF37]" :style="{ color: '#D4AF37', stroke: '#D4AF37' }" />
 								<span
 									v-if="unreadNotificationsCount.data"
-									class="absolute top-1.5 right-1.5 inline-block w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[#051E24] shadow-sm"
+									class="absolute top-1 right-1 inline-block w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[#051E24] shadow-sm"
 								>
 								</span>
 							</span>
