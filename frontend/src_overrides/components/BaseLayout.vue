@@ -28,10 +28,10 @@
 						<router-link
 							:to="{ name: 'Notifications' }"
 							v-slot="{ navigate }"
-							class="flex flex-col items-center"
+							class="flex flex-col items-center outline-none focus:outline-none focus:ring-0"
 						>
-							<span class="relative p-2 rounded-xl text-[#D4AF37] hover:text-white hover:bg-white/10 transition cursor-pointer" @click="navigate">
-								<FeatherIcon name="bell" class="h-6 w-6 text-[#D4AF37]" :style="{ color: '#D4AF37', stroke: '#D4AF37' }" />
+							<span class="relative p-2 rounded-xl text-[#D4AF37] bg-white/[0.04] border border-[#D4AF37]/30 hover:border-[#D4AF37]/60 hover:bg-white/10 transition cursor-pointer outline-none focus:outline-none focus:ring-0 select-none" @click="navigate">
+								<FeatherIcon name="bell" class="h-5 w-5 sm:h-6 sm:w-6 text-[#D4AF37]" :style="{ color: '#D4AF37', stroke: '#D4AF37' }" />
 								<span
 									v-if="unreadNotificationsCount.data"
 									class="absolute top-1 right-1 inline-block w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[#051E24] shadow-sm"
@@ -42,7 +42,7 @@
 
 						<router-link
 							:to="{ name: 'Profile' }"
-							class="flex flex-col items-center pl-1"
+							class="flex flex-col items-center pl-1 outline-none focus:outline-none focus:ring-0"
 						>
 							<div class="ring-2 ring-[#D4AF37]/70 rounded-full transition hover:ring-[#D4AF37] p-0.5">
 								<Avatar
