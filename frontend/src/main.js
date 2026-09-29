@@ -66,12 +66,14 @@ const registerServiceWorker = async () => {
 		let config = ""
 
 		try {
-			config = await window.frappePushNotification.fetchWebConfig()
-			serviceWorkerURL = `${serviceWorkerURL}?config=${encodeURIComponent(
-				JSON.stringify(config)
-			)}`
+			if (window.frappe?.boot?.push_relay_server_url) {
+				config = await window.frappePushNotification.fetchWebConfig()
+				serviceWorkerURL = `${serviceWorkerURL}?config=${encodeURIComponent(
+					JSON.stringify(config)
+				)}`
+			}
 		} catch (err) {
-			console.error("Failed to fetch FCM config", err)
+			console.warn("FCM config not available", err)
 		}
 
 		navigator.serviceWorker

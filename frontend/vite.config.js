@@ -71,6 +71,7 @@ export default defineConfig({
 				name: "Kalikavite",
 				short_name: "Kalika",
 				start_url: "/hrms",
+				scope: "/hrms",
 				description: "Everyday HR & Payroll operations at your fingertips",
 				theme_color: "#ffffff",
 				icons: [
@@ -161,8 +162,12 @@ function getCommonSiteConfig() {
 			fs.existsSync(path.join(currentDir, "apps"))
 		) {
 			let configPath = path.join(currentDir, "sites", "common_site_config.json")
-			if (fs.existsSync(configPath)) {
-				return JSON.parse(fs.readFileSync(configPath))
+			try {
+				if (fs.existsSync(configPath)) {
+					return JSON.parse(fs.readFileSync(configPath))
+				}
+			} catch (e) {
+				return null
 			}
 			return null
 		}

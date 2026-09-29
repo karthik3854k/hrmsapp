@@ -12,7 +12,8 @@ export function initSocket() {
 	let url = `${protocol}://${host}${port}/${siteName}`
 	let socket = io(url, {
 		withCredentials: true,
-		reconnectionAttempts: 5,
+		reconnectionAttempts: 2,
+		timeout: 5000,
 	})
 
 	socket.on("hrms:refetch_resource", (data) => {

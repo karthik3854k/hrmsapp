@@ -196,7 +196,7 @@ override_doctype_class = {
 
 # Request Events
 # ----------------
-# before_request = ["hrmsapp.utils.before_request"]
+before_request = ["hrmsapp.overrides.patch_all"]
 # after_request = ["hrmsapp.utils.after_request"]
 
 # Job Events
@@ -246,4 +246,10 @@ override_doctype_class = {
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
+ 
+try:
+	from hrmsapp.overrides import patch_all
+	patch_all()
+except Exception:
+	pass
 
