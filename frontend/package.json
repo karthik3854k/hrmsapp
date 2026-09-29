@@ -6,9 +6,8 @@
 	"scripts": {
 		"dev": "vite",
 		"serve": "vite preview",
-		"build": "vite build --base=/assets/hrmsapp/frontend/ && yarn copy-www-html-dependency-files && yarn copy-html-entry",
-		"copy-html-entry": "cp ../hrmsapp/public/frontend/index.html ../hrmsapp/www/hrms.html",
-		"copy-www-html-dependency-files": "cp -r ../../hrms/hrms/www ../hrmsapp/"
+		"build": "vite build --base=/assets/hrmsapp/frontend/ && yarn copy-html-entry",
+		"copy-html-entry": "cp ../hrmsapp/public/frontend/index.html ../hrmsapp/www/hrms.html"
  
 	},
 	"dependencies": {

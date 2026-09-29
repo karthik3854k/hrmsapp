@@ -1,3 +1,4 @@
+import os
 import frappe
 from frappe.boot import load_translations
 
@@ -11,6 +12,23 @@ def get_context(context):
 	context.csrf_token = csrf_token
 	context.boot = get_boot()
 	context.site_name = frappe.local.site
+	context.base_template = None
+
+	# Dynamically load the compiled index.html directly from public/frontend
+	# This ensures hrms always serves whatever current build hash exists on disk,
+	# permanently eliminating 404 blank screens from stale static templates.
+	index_path = frappe.get_app_path("hrmsapp", "public", "frontend", "index.html")
+	if os.path.exists(index_path):
+		try:
+			with open(index_path, "r", encoding="utf-8") as f:
+				raw_html = f.read()
+			context.app_html = frappe.render_template(raw_html, context)
+		except Exception:
+			frappe.log_error("Failed to render hrmsapp public frontend index.html")
+			context.app_html = None
+	else:
+		context.app_html = None
+
 	return context
 
 
