@@ -1,27 +1,24 @@
 <template>
-  <div class="flex justify-center mb-4">
-    <div class="logo-card">
+  <div class="flex items-center justify-center">
+    <div class="w-12 h-12 rounded-xl p-1 bg-[#0b1a2d] border border-amber-400/60 shadow-md flex items-center justify-center">
       <img
-        src="/images/kalikajewels.png"
+        :src="logoUrl"
         alt="Kalika Jewels"
-        class="logo-img"
+        class="w-full h-full object-contain"
+        @error="handleLogoError"
       />
     </div>
   </div>
 </template>
 
-<style scoped>
-.logo-card {
-  border: 2px solid #c9a45c;
-  border-radius: 14px;
-  padding: 8px;
-  background: white;
-  box-shadow: 0 4px 15px rgba(201, 164, 92, 0.2);
-}
+<script setup>
+import { ref } from "vue"
 
-.logo-img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
+const logoUrl = ref("/assets/hrmsapp/frontend/images/kalikajewels.png")
+
+function handleLogoError(e) {
+  if (e?.target) {
+    e.target.src = "/assets/hrms/images/frappe-hr-logo.svg"
+  }
 }
-</style>
+</script>

@@ -1,7 +1,7 @@
 <template>
 	<ion-tab-bar
 		slot="bottom"
-		class="bg-white shadow-md sm:w-96 py-2 pb-2 standalone:pb-safe-bottom"
+		class="bg-white/95 backdrop-blur-md border-t border-slate-200/80 shadow-md py-1.5 pb-2 standalone:pb-safe-bottom"
 	>
 		<ion-tab-button
 			v-for="item in tabItems"
@@ -9,13 +9,18 @@
 			:tab="item.title"
 			:href="item.route"
 			:class="[
-				'bg-white text-xs space-y-1.5 !hover:border-gray-300 !hover:text-gray-700 transition active:scale-95',
+				'bg-transparent text-[11px] space-y-1 transition active:scale-95',
 				route.path === item.route
-					? 'border-gray-900 text-gray-800 font-semibold'
-					: 'text-gray-600 font-normal',
+					? '!text-[#0b1a2d] font-bold'
+					: '!text-slate-400 hover:!text-slate-600 font-medium',
 			]"
 		>
-			<component :is="item.icon" class="h-5 w-5" />
+			<div 
+				class="p-1 rounded-xl transition-all flex items-center justify-center"
+				:class="route.path === item.route ? 'bg-amber-50 text-amber-600 scale-105' : 'text-slate-400'"
+			>
+				<component :is="item.icon" class="h-5 w-5" />
+			</div>
 			<div>{{ item.title }}</div>
 		</ion-tab-button>
 	</ion-tab-bar>
@@ -24,7 +29,7 @@
 <script setup>
 import { useRoute } from "vue-router"
 
-import { IonTabBar, IonTabButton, IonLabel } from "@ionic/vue"
+import { IonTabBar, IonTabButton } from "@ionic/vue"
 
 import HomeIcon from "@/components/icons/HomeIcon.vue"
 import LeaveIcon from "@/components/icons/LeaveIcon.vue"
