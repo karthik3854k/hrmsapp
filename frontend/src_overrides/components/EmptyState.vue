@@ -13,7 +13,7 @@
 		<span class="text-white font-semibold text-base mb-1">
 			{{ __(props.message) }}
 		</span>
-		<span class="text-xs text-slate-400">
+		<span class="text-xs text-[#D4AF37]/80">
 			No request history found
 		</span>
 	</div>

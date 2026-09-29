@@ -1,12 +1,12 @@
 <template>
 	<ListItem>
 		<template #left>
-			<SalaryIcon class="h-5 w-5 text-[#D4AF37]" />
+			<SalaryIcon class="h-5 w-5 text-gray-500" />
 			<div class="flex flex-col items-start gap-1.5">
-				<div class="text-base font-medium text-white">
+				<div class="text-base font-normal text-gray-800">
 					{{ title }}
 				</div>
-				<div v-if="doc?.gross_pay" class="text-xs font-normal text-slate-300">
+				<div v-if="doc?.gross_pay" class="text-xs font-normal text-gray-500">
 					<span>
 						{{
 							__("{0}: {1}", [
@@ -20,10 +20,10 @@
 			</div>
 		</template>
 		<template #right>
-			<span v-if="doc?.net_pay" class="text-[#D4AF37] font-semibold rounded text-base">
+			<span v-if="doc?.net_pay" class="text-gray-700 font-normal rounded text-base">
 				{{ formatCurrency(doc.net_pay, doc.currency) }}
 			</span>
-			<FeatherIcon name="chevron-right" class="h-5 w-5 text-[#D4AF37]" />
+			<FeatherIcon name="chevron-right" class="h-5 w-5 text-gray-500" />
 		</template>
 	</ListItem>
 </template>

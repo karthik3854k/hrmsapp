@@ -2,13 +2,13 @@
 	<ion-header class="ion-no-border">
 		<div class="w-full sm:w-96">
 			<div
-				class="flex flex-row bg-[#07252c] shadow-sm py-4 px-3 items-center justify-between border-b border-[#D4AF37]/20"
+				class="flex flex-row bg-white shadow-sm py-4 px-3 items-center justify-between border-b"
 			>
 				<div class="flex flex-row items-center">
-					<Button variant="ghost" class="!px-1 mr-1 !text-[#D4AF37] hover:!bg-white/10" @click="router.back()">
+					<Button variant="ghost" class="!px-1 mr-1 hover:bg-white" @click="router.back()">
 						<FeatherIcon name="chevron-left" class="h-5 w-5" />
 					</Button>
-					<h2 class="text-xl font-bold text-white tracking-tight">{{ pageTitle }}</h2>
+					<h2 class="text-xl font-semibold text-gray-900">{{ pageTitle }}</h2>
 				</div>
 
 				<div class="flex flex-row gap-2">
@@ -16,10 +16,9 @@
 						id="show-filter-modal"
 						icon="filter"
 						variant="subtle"
-						class="!text-[#D4AF37] !border !border-[#D4AF37]/40 !bg-[#051E24] hover:!bg-white/10"
 						:class="[
 							areFiltersApplied
-								? '!border !border-[#D4AF37] !bg-[#0c3742] !text-[#D4AF37] !font-bold'
+								? '!border !border-gray-800 !bg-white !text-gray-900 !font-semibold'
 								: '',
 						]"
 					/>
@@ -28,11 +27,7 @@
 						:to="{ name: formViewRoute }"
 						v-slot="{ navigate }"
 					>
-						<Button 
-							variant="solid" 
-							class="mr-2 !bg-[#D4AF37] !text-[#051E24] !font-bold hover:!bg-amber-400 border-none shadow" 
-							@click="navigate"
-						>
+						<Button variant="solid" class="mr-2" @click="navigate">
 							<template #prefix>
 								<FeatherIcon name="plus" class="w-4" />
 							</template>
@@ -63,11 +58,11 @@
 				/>
 
 				<div
-					class="flex flex-col bg-[#07252c] rounded-2xl border border-[#D4AF37]/30 divide-y divide-[#D4AF37]/15 shadow-lg overflow-hidden mt-5"
+					class="flex flex-col bg-white rounded mt-5"
 					v-if="!documents.loading && documents.data?.length"
 				>
 					<div
-						class="p-3.5 sm:p-4 items-center justify-between hover:bg-white/[0.04] transition cursor-pointer"
+						class="p-3.5 items-center justify-between border-b cursor-pointer"
 						v-for="link in documents.data"
 						:key="link.name"
 					>
