@@ -50,6 +50,7 @@ function srcOverridesPlugin() {
 }
 
 export default defineConfig({
+	base: "/assets/hrmsapp/frontend/",
 	server: {
 		port: 8080,
 		proxy: getProxyOptions(),
