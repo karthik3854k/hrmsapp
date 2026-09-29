@@ -3,11 +3,11 @@
 		<button
 			v-for="button in buttons"
 			:key="button.key ?? button.label ?? button"
-			class="py-2.5 transition-all rounded-lg flex-auto font-medium text-xs sm:text-sm text-center"
+			class="py-2.5 transition-all rounded-lg flex-auto text-xs sm:text-sm text-center"
 			:class="
 				modelValue === (button.key ?? button.label ?? button)
 					? 'bg-[#0c3742] text-[#D4AF37] font-bold border border-[#D4AF37]/50 shadow-md'
-					: 'text-slate-400 hover:text-white'
+					: 'text-slate-200 hover:text-white font-medium'
 			"
 			@click="$emit('update:modelValue', button.key ?? button.label ?? button)"
 		>

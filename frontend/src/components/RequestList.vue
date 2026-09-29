@@ -1,7 +1,7 @@
 <template>
-	<div class="flex flex-col bg-[#07252c] rounded-2xl shadow-lg border border-[#D4AF37]/30 mt-4 overflow-hidden divide-y divide-[#D4AF37]/15 text-white" v-if="props.items?.length">
+	<div class="flex flex-col bg-[#07252c] rounded-2xl shadow-lg border border-[#D4AF37]/30 mt-4 overflow-hidden divide-y divide-[#D4AF37]/15 text-white request-list-container" v-if="props.items?.length">
 		<div
-			class="flex flex-row p-3.5 sm:p-4 items-center justify-between hover:bg-white/[0.04] active:bg-white/[0.08] transition cursor-pointer"
+			class="flex flex-row p-3.5 sm:p-4 items-center justify-between hover:bg-white/[0.04] active:bg-white/[0.08] transition cursor-pointer group"
 			v-for="link in props.items"
 			:key="link.name"
 			@click="openRequestModal(link)"
@@ -107,3 +107,25 @@ function closeRequestModal() {
 	isRequestModalOpen.value = false
 }
 </script>
+
+<style scoped>
+.request-list-container :deep(.text-gray-800),
+.request-list-container :deep(.text-gray-900),
+.request-list-container :deep(.text-gray-700) {
+	color: #ffffff !important;
+	font-weight: 500 !important;
+}
+
+.request-list-container :deep(.text-gray-500),
+.request-list-container :deep(.text-gray-600),
+.request-list-container :deep(.text-slate-400),
+.request-list-container :deep(.text-slate-500) {
+	color: #cbd5e1 !important;
+}
+
+.request-list-container :deep(svg.text-gray-500),
+.request-list-container :deep(.feather-chevron-right),
+.request-list-container :deep([name="chevron-right"]) {
+	color: #D4AF37 !important;
+}
+</style>
