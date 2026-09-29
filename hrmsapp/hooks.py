@@ -5,6 +5,10 @@ app_description = "hrmsapp"
 app_email = "polisettykarthik3@gmail.com"
 app_license = "mit"
 
+# Templates
+# ------------------
+template_apps = ["hrmsapp", "hrms", "erpnext", "frappe"]
+
 # Apps
 # ------------------
 

@@ -1,0 +1,8 @@
+{
+  "name": "hrmsapp",
+  "version": "0.0.1",
+  "description": "hrmsapp custom overrides and luxury UI for Frappe HR",
+  "scripts": {
+    "build": "cd frontend && yarn build"
+  }
+}
