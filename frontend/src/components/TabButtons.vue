@@ -1,13 +1,13 @@
 <template>
-	<div class="flex p-1 bg-slate-100 rounded-xl border border-slate-200/60 shadow-inner">
+	<div class="flex p-1 bg-[#04161a] rounded-xl border border-[#D4AF37]/35 shadow-inner">
 		<button
 			v-for="button in buttons"
 			:key="button.key ?? button.label ?? button"
 			class="py-2.5 transition-all rounded-lg flex-auto font-medium text-xs sm:text-sm text-center"
 			:class="
 				modelValue === (button.key ?? button.label ?? button)
-					? 'bg-white shadow-sm text-slate-900 font-semibold'
-					: 'text-slate-500 hover:text-slate-800'
+					? 'bg-[#0c3742] text-[#D4AF37] font-bold border border-[#D4AF37]/50 shadow-md'
+					: 'text-slate-400 hover:text-white'
 			"
 			@click="$emit('update:modelValue', button.key ?? button.label ?? button)"
 		>

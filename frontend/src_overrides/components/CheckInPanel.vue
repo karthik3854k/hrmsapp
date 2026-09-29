@@ -1,29 +1,30 @@
 <template>
-	<div class="flex flex-col bg-white rounded-2xl w-full py-5 px-5 shadow-sm border border-slate-100">
+	<div class="flex flex-col bg-[#07252c] rounded-2xl w-full py-5 px-5 shadow-lg border border-[#D4AF37]/30">
 		<div class="flex items-center justify-between">
-			<h2 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+			<h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">
 				{{ __("Hey, {0} 👋", [employee?.data?.first_name]) }}
 			</h2>
-			<div class="px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200/60 text-amber-700 text-xs font-semibold tracking-wide">
+			<div class="px-2.5 py-0.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-semibold tracking-wide">
 				Kalika HR
 			</div>
 		</div>
 
 		<template v-if="settings.data?.allow_employee_checkin_from_mobile_app">
-			<div class="font-medium text-xs sm:text-sm text-slate-500 mt-1.5" v-if="lastLog">
+			<div class="font-medium text-xs sm:text-sm text-slate-300 mt-2" v-if="lastLog">
 				<span>{{ __("Last {0} was at {1}", [__(lastLogType), formatTimestamp(lastLog.time)]) }}</span>
-				<span class="whitespace-pre text-slate-300"> &middot; </span>
+				<span class="whitespace-pre text-slate-500"> &middot; </span>
 				<router-link :to="{ name: 'EmployeeCheckinListView' }" v-slot="{ navigate }">
-					<span @click="navigate" class="text-amber-600 hover:text-amber-700 font-semibold underline underline-offset-2">View List</span>
+					<span @click="navigate" class="text-[#D4AF37] hover:underline font-semibold">View List</span>
 				</router-link>
 			</div>
 			<Button
-				class="mt-4 mb-1 drop-shadow-sm py-3.5 sm:py-4 text-sm sm:text-base font-semibold rounded-xl text-white transition active:scale-[0.99] border-0"
+				class="mt-4 mb-1 py-3.5 sm:py-4 text-sm sm:text-base font-bold rounded-xl transition active:scale-[0.99] border-0 shadow-lg"
 				:style="{
-					backgroundColor: nextAction.action === 'IN' ? '#0b1a2d' : '#78350f',
+					backgroundColor: nextAction.action === 'IN' ? '#D4AF37' : '#e11d48',
 					backgroundImage: nextAction.action === 'IN' 
-						? 'linear-gradient(135deg, #0b1a2d 0%, #173255 100%)' 
-						: 'linear-gradient(135deg, #78350f 0%, #a16207 100%)'
+						? 'linear-gradient(135deg, #E6CA65 0%, #D4AF37 50%, #B8860B 100%)' 
+						: 'linear-gradient(135deg, #f43f5e 0%, #e11d48 100%)',
+					color: nextAction.action === 'IN' ? '#051E24' : '#ffffff'
 				}"
 				id="open-checkin-modal"
 				@click="handleEmployeeCheckin"
@@ -31,14 +32,15 @@
 				<template #prefix>
 					<FeatherIcon
 						:name="nextAction.action === 'IN' ? 'arrow-right-circle' : 'arrow-left-circle'"
-						class="w-4 h-4 text-amber-400 mr-2"
+						class="w-4 h-4 mr-2"
+						:style="{ color: nextAction.action === 'IN' ? '#051E24' : '#ffffff' }"
 					/>
 				</template>
 				{{ nextAction.label }}
 			</Button>
 		</template>
 
-		<div v-else class="font-medium text-xs sm:text-sm text-slate-500 mt-1.5">
+		<div v-else class="font-medium text-xs sm:text-sm text-slate-400 mt-2">
 			{{ dayjs().format("ddd, D MMMM, YYYY") }}
 		</div>
 	</div>
@@ -50,22 +52,22 @@
 		:initial-breakpoint="1"
 		:breakpoints="[0, 1]"
 	>
-		<div class="h-120 w-full flex flex-col items-center justify-center gap-5 p-4 mb-5">
+		<div class="h-120 w-full flex flex-col items-center justify-center gap-5 p-5 mb-5 bg-[#051E24] text-white">
 			<div class="flex flex-col gap-1.5 mt-2 items-center justify-center">
-				<div class="font-bold text-2xl text-slate-900 tracking-tight">
+				<div class="font-bold text-2xl text-white tracking-tight">
 					{{ dayjs(checkinTimestamp).format("hh:mm:ss a") }}
 				</div>
-				<div class="font-medium text-slate-500 text-sm">
+				<div class="font-medium text-[#D4AF37] text-sm">
 					{{ dayjs().format("D MMM, YYYY") }}
 				</div>
 			</div>
 
 			<template v-if="settings.data?.allow_geolocation_tracking">
-				<span v-if="locationStatus" class="font-medium text-slate-500 text-xs sm:text-sm">
+				<span v-if="locationStatus" class="font-medium text-slate-300 text-xs sm:text-sm">
 					{{ locationStatus }}
 				</span>
 
-				<div class="rounded-2xl border-2 border-slate-200 translate-z-0 block overflow-hidden w-full h-170 shadow-sm">
+				<div class="rounded-2xl border border-[#D4AF37]/40 translate-z-0 block overflow-hidden w-full h-170 shadow-md">
 					<iframe
 						width="100%"
 						height="170"
@@ -83,7 +85,8 @@
 			<Button 
 				:loading="checkins.insert.loading" 
 				variant="solid" 
-				class="w-full py-4 text-sm font-semibold rounded-xl text-white bg-[#0b1a2d] hover:bg-[#162f4e] border-0" 
+				class="w-full py-4 text-sm font-bold rounded-xl text-[#051E24] border-0" 
+				style="background: linear-gradient(135deg, #E6CA65 0%, #D4AF37 100%);"
 				@click="submitLog(nextAction.action)"
 			>
 				{{ __("Confirm {0}", [nextAction.label]) }}

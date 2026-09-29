@@ -1,7 +1,7 @@
 <template>
-	<div class="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 mt-4 overflow-hidden divide-y divide-slate-100" v-if="props.items?.length">
+	<div class="flex flex-col bg-[#07252c] rounded-2xl shadow-lg border border-[#D4AF37]/30 mt-4 overflow-hidden divide-y divide-[#D4AF37]/15 text-white" v-if="props.items?.length">
 		<div
-			class="flex flex-row p-3.5 sm:p-4 items-center justify-between hover:bg-slate-50/80 active:bg-slate-100 transition cursor-pointer"
+			class="flex flex-row p-3.5 sm:p-4 items-center justify-between hover:bg-white/[0.04] active:bg-white/[0.08] transition cursor-pointer"
 			v-for="link in props.items"
 			:key="link.name"
 			@click="openRequestModal(link)"
@@ -22,7 +22,7 @@
 			<Button
 				variant="ghost"
 				@click="navigate"
-				class="w-full !text-amber-600 hover:!text-amber-700 font-semibold py-4 text-xs sm:text-sm border-none bg-white hover:bg-slate-50 transition"
+				class="w-full !text-[#D4AF37] hover:!text-amber-300 font-semibold py-4 text-xs sm:text-sm border-none bg-transparent hover:bg-white/5 transition"
 			>
 				{{ __("View List") }} &rarr;
 			</Button>

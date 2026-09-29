@@ -1,7 +1,7 @@
 <template>
 	<ion-tab-bar
 		slot="bottom"
-		class="bg-white/95 backdrop-blur-md border-t border-slate-200/80 shadow-md py-1.5 pb-2 standalone:pb-safe-bottom"
+		class="bg-[#051E24]/95 backdrop-blur-md border-t border-[#D4AF37]/30 shadow-lg py-1.5 pb-2 standalone:pb-safe-bottom"
 	>
 		<ion-tab-button
 			v-for="item in tabItems"
@@ -11,13 +11,13 @@
 			:class="[
 				'bg-transparent text-[11px] space-y-1 transition active:scale-95',
 				route.path === item.route
-					? '!text-[#0b1a2d] font-bold'
-					: '!text-slate-400 hover:!text-slate-600 font-medium',
+					? '!text-[#D4AF37] font-bold'
+					: '!text-slate-400 hover:!text-slate-200 font-medium',
 			]"
 		>
 			<div 
 				class="p-1 rounded-xl transition-all flex items-center justify-center"
-				:class="route.path === item.route ? 'bg-amber-50 text-amber-600 scale-105' : 'text-slate-400'"
+				:class="route.path === item.route ? 'bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/40 scale-105 shadow-sm' : 'text-slate-400'"
 			>
 				<component :is="item.icon" class="h-5 w-5" />
 			</div>

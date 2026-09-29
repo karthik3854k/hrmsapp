@@ -1,11 +1,11 @@
 <template>
 	<ion-page>
 		<ion-header class="ion-no-border">
-			<div class="w-full bg-white border-b border-slate-100 shadow-sm">
+			<div class="w-full bg-[#051E24] border-b border-[#D4AF37]/30 shadow-md">
 				<div class="w-full max-w-xl mx-auto px-4 py-3 sm:py-3.5 flex flex-row justify-between items-center">
 					<!-- Brand & Logo Above -->
 					<div class="flex flex-row items-center gap-3">
-						<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl p-1 bg-[#0b1a2d] border border-amber-400/60 shadow-sm flex items-center justify-center shrink-0">
+						<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl p-1 bg-[#031519] border border-[#D4AF37]/70 shadow-sm flex items-center justify-center shrink-0">
 							<img
 								:src="logoUrl"
 								alt="Kalika Jewels"
@@ -14,10 +14,10 @@
 							/>
 						</div>
 						<div class="flex flex-col">
-							<h2 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight leading-tight">
+							<h2 class="text-base sm:text-lg font-bold text-white tracking-tight leading-tight">
 								{{ props.pageTitle || __("Kalika Jewels") }}
 							</h2>
-							<span v-if="!props.pageTitle" class="text-[10px] font-semibold tracking-wider text-amber-600 uppercase leading-none">
+							<span v-if="!props.pageTitle" class="text-[10px] font-semibold tracking-wider text-[#D4AF37] uppercase leading-none">
 								HRMS PORTAL
 							</span>
 						</div>
@@ -30,11 +30,11 @@
 							v-slot="{ navigate }"
 							class="flex flex-col items-center"
 						>
-							<span class="relative p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition cursor-pointer" @click="navigate">
+							<span class="relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition cursor-pointer" @click="navigate">
 								<FeatherIcon name="bell" class="h-5 w-5" />
 								<span
 									v-if="unreadNotificationsCount.data"
-									class="absolute top-1.5 right-1.5 inline-block w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white shadow-sm"
+									class="absolute top-1.5 right-1.5 inline-block w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[#051E24] shadow-sm"
 								>
 								</span>
 							</span>
@@ -44,7 +44,7 @@
 							:to="{ name: 'Profile' }"
 							class="flex flex-col items-center pl-1"
 						>
-							<div class="ring-2 ring-amber-400/40 rounded-full transition hover:ring-amber-500/70 p-0.5">
+							<div class="ring-2 ring-[#D4AF37]/70 rounded-full transition hover:ring-[#D4AF37] p-0.5">
 								<Avatar
 									:image="user.data.user_image"
 									:label="user.data.first_name"
@@ -58,8 +58,8 @@
 		</ion-header>
 
 		<ion-content class="ion-no-padding">
-			<div class="w-full min-h-screen bg-slate-50/60 pb-20">
-				<div class="w-full max-w-xl mx-auto px-4">
+			<div class="w-full min-h-screen bg-[#051E24] pb-24">
+				<div class="w-full max-w-xl mx-auto px-4 py-3">
 					<slot name="body"></slot>
 				</div>
 			</div>
@@ -94,6 +94,6 @@ function handleLogoError(e) {
 
 <style scoped>
 ion-content {
-	--background: #f8fafc;
+	--background: #051E24;
 }
 </style>

@@ -19,9 +19,10 @@
             <!-- Logo area -->
             <div class="flex flex-col items-center justify-center mb-6">
               <img
-                src="/images/kalikajewels.png"
+                :src="logoUrl"
                 alt="Kalika Jewels"
                 class="w-40 max-w-[170px] object-contain"
+                @error="handleLogoError"
               />
             </div>
 
@@ -42,7 +43,6 @@
 
             <!-- Login Form -->
             <form
-              v-if="!user_pass_login_disabled.data"
               @submit.prevent="submit"
               class="space-y-4 px-2"
             >
@@ -176,6 +176,14 @@ import { Button, ErrorMessage, createResource } from "frappe-ui"
 const email = ref(null)
 const password = ref(null)
 const errorMessage = ref("")
+
+const logoUrl = ref("/assets/hrmsapp/frontend/images/kalikajewels.png")
+
+function handleLogoError(e) {
+  if (e?.target) {
+    e.target.src = "/assets/hrms/images/frappe-hr-logo.svg"
+  }
+}
 
 const resetPassword = reactive({
   showDialog: false,
